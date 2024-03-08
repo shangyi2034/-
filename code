@@ -1,0 +1,27 @@
+import os
+
+def search_files(directory, keyword):
+    matches = []
+
+    for root, dirs, files in os.walk(directory):
+        for file in files:
+            if keyword in file:
+                matches.append(os.path.join(root, file))
+
+    return matches
+
+def main():
+    directory = input("Enter the directory to search in: ")
+    keyword = input("Enter the keyword to search for: ")
+
+    matches = search_files(directory, keyword)
+
+    if matches:
+        print("Matching files:")
+        for match in matches:
+            print(match)
+    else:
+        print("No matching files found.")
+
+if __name__ == "__main__":
+    main()
